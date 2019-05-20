@@ -1,0 +1,18 @@
+body {
+  background-color: orange;
+  padding: 50px;
+}
+
+#quote-box {
+  background: red;
+  padding: 5px;
+  text-align: center;
+}
+
+#text {
+  color: orange;
+}
+
+#author {
+  color: orange;
+}
