@@ -3,21 +3,16 @@ import React, { Component } from "react";
 import "./App.css";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      info: [],
-      quote: "",
-      author: ""
-    };
-    this.END_POINT =
-      "https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
-    this.handleClick = this.handleClick.bind(this);
-    this.shareOnTwitter = this.shareOnTwitter.bind(this);
-  }
+  state = {
+    info: [],
+    quote: "",
+    author: ""
+  };
 
   componentDidMount() {
-    fetch(this.END_POINT)
+    fetch(
+      "https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json"
+    )
       .then(response => response.json())
       .then(data => {
         // console.log(data);
@@ -46,17 +41,6 @@ class App extends Component {
     });
   };
 
-  shareOnTwitter = (text, url) => {
-    window.open(
-      "http://twitter.com/share?url=" +
-        encodeURIComponent(url) +
-        "&text=" +
-        encodeURIComponent(text),
-      "",
-      "left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0"
-    );
-  };
-
   render() {
     const { author, quote } = this.state;
 
@@ -78,16 +62,6 @@ class App extends Component {
             >
               Generate next quote
             </button>
-            <br />
-            <a
-              href="twitter.com/intent/tweet"
-              target="_blank"
-              className="btn btn-primary"
-              id="tweet-quote"
-              // onClick={this.shareOnTwitter}
-            >
-              Tweet Quote
-            </a>
           </div>
         </div>
       </div>
