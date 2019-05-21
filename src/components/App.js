@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import quotes from "../components/apis";
 import "./App.css";
 
 class App extends Component {
@@ -10,21 +11,17 @@ class App extends Component {
   };
 
   componentDidMount() {
-    fetch(
-      "https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json"
-    )
-      .then(response => response.json())
-      .then(data => {
-        // console.log(data);
-        this.setState({
-          info: data.quotes,
-          quote: data.quotes[0].quote,
-          author: data.quotes[0].author
-        });
-        // console.log(this.state.info);
-        // console.log(this.state.quote);
-        // console.log(this.state.author);
-      });
+    const response = quotes.get();
+
+    console.log(response);
+    // this.setState({
+    //   info: response.quotes,
+    //   quote: response.quotes[0].quote,
+    //   author: response.quotes[0].author
+    // });
+    // console.log(this.state.info);
+    // console.log(this.state.quote);
+    // console.log(this.state.author);
   }
 
   handleClick = event => {
