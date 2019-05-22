@@ -41,22 +41,23 @@ class App extends Component {
 
     return (
       <div className="container">
-        <div className="card quote-box">
-          <h1 className="title mt-3">Random Quote Machine</h1>
-          <div className="card-body">
-            <h5 className="card-title" id="text">
-              {quote}
-            </h5>
-            <p className="card-text" id="author">
-              -{author}
-            </p>
-            <button
-              className="btn btn-primary"
-              id="new-quote"
-              onClick={this.handleClick}
-            >
-              Generate for New Quote
-            </button>
+        <div className="row justify-content-center">
+          <div className="col-10">
+            <div className="card quote-box">
+              <h1 className="title mt-3">Random Quote Machine</h1>
+              <hr />
+              <div className="card-body">
+                <h5 className="card-title text">{quote}</h5>
+                <p className="card-text author">- {author}</p>
+                <button
+                  className="btn btn-success"
+                  id="new-quote"
+                  onClick={this.handleClick}
+                >
+                  Generate for New Quote
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

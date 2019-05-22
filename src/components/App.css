@@ -5,17 +5,19 @@ body {
 .quote-box {
   margin-top: 25vh;
   text-align: center;
-  border-radius: 100px;
+  border-radius: 50px;
   border: none;
 }
 
 .title {
+  font-family: "Stylish", sans-serif;
+  margin: 0 auto;
 }
 
-#text {
-  color: orange;
+.text {
+  font-family: "Montaga", serif;
 }
 
-#author {
-  color: orange;
+.author {
+  font-family: "Montaga", serif;
 }
