@@ -1,6 +1,6 @@
 import React, { Component } from "react";
+import axios from "axios";
 
-import quotes from "../components/apis";
 import "./App.css";
 
 class App extends Component {
@@ -11,26 +11,24 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const response = quotes.get();
-
-    console.log(response);
-    // this.setState({
-    //   info: response.quotes,
-    //   quote: response.quotes[0].quote,
-    //   author: response.quotes[0].author
-    // });
-    // console.log(this.state.info);
-    // console.log(this.state.quote);
-    // console.log(this.state.author);
+    axios
+      .get(
+        "https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json"
+      )
+      .then(response => {
+        this.setState({
+          info: response.data.quotes,
+          quote: response.data.quotes[0].quote,
+          author: response.data.quotes[0].author
+        });
+      });
   }
 
   handleClick = event => {
     event.preventDefault();
     const quoteNum = Math.floor(Math.random() * this.state.info.length);
-    // console.log(quoteNum);
 
     const newQuote = this.state.info[quoteNum];
-    // console.log(newQuote);
 
     this.setState({
       quote: newQuote.quote,
@@ -42,9 +40,9 @@ class App extends Component {
     const { author, quote } = this.state;
 
     return (
-      <div className="container" id="quote-box">
-        <div className="card">
-          <div className="card-header">Random Quote Machine</div>
+      <div className="container">
+        <div className="card quote-box">
+          <h1 className="title mt-3">Random Quote Machine</h1>
           <div className="card-body">
             <h5 className="card-title" id="text">
               {quote}
@@ -57,7 +55,7 @@ class App extends Component {
               id="new-quote"
               onClick={this.handleClick}
             >
-              Generate next quote
+              Generate for New Quote
             </button>
           </div>
         </div>
