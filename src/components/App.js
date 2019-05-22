@@ -54,7 +54,7 @@ class App extends Component {
                   id="new-quote"
                   onClick={this.handleClick}
                 >
-                  Generate for New Quote
+                  Click for new quote
                 </button>
               </div>
             </div>
